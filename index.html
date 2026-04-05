@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>StoryLearn — Food Science & Nutrition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #f59e0b;
+    --blue: #60a5fa;
+    --green: #34d399;
+    --red: #f87171;
+    --purple: #a78bfa;
+  }
+  * { scroll-behavior: smooth; box-sizing: border-box; }
+  body { font-family: 'Source Serif 4', Georgia, serif; overflow-x: hidden; }
+  h1, h2, .unit-title { font-family: 'Playfair Display', Georgia, serif; }
+
+  .card-body { max-height: 0; overflow: hidden; transition: max-height 1.2s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease; opacity: 0; }
+  .card-body.open { max-height: 9999px; opacity: 1; }
+
+  .card { transition: box-shadow 0.3s, transform 0.2s; cursor: pointer; }
+  @media (hover: hover) {
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(245,158,11,0.12); }
+  }
+
+  .chevron { transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .progress-bar { transition: width 0.5s ease; }
+
+  .ep-badge { font-family: 'Playfair Display', serif; letter-spacing: 0.05em; }
+
+  #scrollTop { transition: opacity 0.4s, transform 0.4s; }
+
+  .kw { color: #fbbf24; font-weight: 600; }
+  .char { color: #93c5fd; font-weight: 600; }
+  .char-p { color: #86efac; font-weight: 600; }
+  .char-d { color: #c4b5fd; font-weight: 600; }
+  .char-r { color: #fda4af; font-weight: 600; }
+  .scene { color: #94a3b8; font-style: italic; font-size: 0.9em; }
+  .dialogue-block { border-left: 3px solid #334155; padding-left: 0.875rem; margin: 0.5rem 0; }
+
+  .unit-divider { background: linear-gradient(90deg, transparent, #f59e0b44, transparent); height: 1px; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* Prevent text from being too wide on large screens */
+  .prose-content p { max-width: 72ch; }
+</style>
+</head>
+<body class="bg-slate-900 text-gray-200 min-h-screen relative">
+
+<!-- STICKY HEADER -->
+<header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700/60 shadow-2xl">
+  <div class="max-w-4xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="min-w-0">
+        <div class="text-yellow-400 text-xs font-semibold tracking-widest uppercase mb-0.5 truncate">Story-Based Learning</div>
+        <h1 class="text-base sm:text-xl font-black text-white leading-tight">Food Science &amp; Nutrition</h1>
+      </div>
+      <div class="text-right shrink-0">
+        <div class="text-xs text-slate-400 mb-1">Progress</div>
+        <div class="w-24 sm:w-36 h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div id="progressBar" class="progress-bar h-full bg-yellow-400 rounded-full" style="width:0%"></div>
+        </div>
+        <div id="progressText" class="text-xs text-slate-400 mt-1">0 / 18 episodes</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 relative z-10">
+
+<!-- INTRO -->
+<div class="text-center mb-10 sm:mb-14">
+  <div class="inline-block bg-yellow-400/10 border border-yellow-400/30 rounded-full px-3 sm:px-4 py-1 text-yellow-400 text-xs tracking-widest uppercase mb-4">18 Story Episodes · 5 Units</div>
+  <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-3">Learn Like You Watch Netflix</h2>
+  <p class="text-slate-400 text-sm sm:text-base lg:text-lg max-w-xl mx-auto leading-relaxed">Every concept is a story. Every story has characters. Click any episode to begin your journey.</p>
+</div>
+
+<!-- ═══════════════════════════════ UNIT 1 ═══════════════════════════════ -->
+<div class="mb-3">
+  <div class="unit-divider mb-5 sm:mb-6"></div>
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+    <span class="bg-yellow-400 text-slate-900 text-xs font-black px-3 py-1 rounded-full tracking-widest whitespace-nowrap">UNIT 1</span>
+    <h2 class="text-lg sm:text-xl lg:text-2xl font-black text-white leading-snug">Microbes, Hazards &amp; Substances</h2>
+  </div>
+</div>
+
+<!-- EP 1 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-yellow-400/20 text-yellow-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 01</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 1 · Episode 1</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Invisible Chefs — Food Resources from Microbes</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">How tiny living things feed the world</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-yellow-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: A college canteen. Arjun is eating curd rice and staring at his food with a confused face.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Rina, why does curd taste sour? And how is it even made?"</p>
+        <p class="mt-2"><span class="char-r">Rina:</span> "You eat it every day and you don't know? Tiny microbes made it!"</p>
+        <p class="mt-2"><span class="char">Arjun:</span> "Microbes? Like bacteria? Aren't they dangerous?"</p>
+      </div>
+
+      <p class="scene">🎬 Scene: Professor walks in, carrying a small jar of yogurt.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-p">Professor:</span> "Not all bacteria are bad, Arjun. Some are our best food makers. Let me explain."</p>
+      </div>
+
+      <p>The Professor pulls out a whiteboard and writes: <span class="kw">Food Resources from Microbes</span>.</p>
+
+      <p>"Microbes — bacteria, fungi, and yeast — have been making food for thousands of years. Long before factories, nature used these tiny creatures to transform simple ingredients into nutritious, preserved, and flavourful food."</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "So microbes are like invisible chefs?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Exactly! And they never take a day off."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🍶 1. Fermented Foods</p>
+
+      <p>The most important gift microbes give us is <span class="kw">fermented food</span>. Fermentation means microbes break down sugars and produce acids, alcohol, or gases — and this transforms food.</p>
+
+      <p><span class="kw">Lactic Acid Bacteria (LAB)</span> are the stars here. They consume the sugar in milk and produce <span class="kw">lactic acid</span> — this is what makes curd, yogurt, and cheese sour and thick.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "So when I add a spoon of old curd to fresh milk, I am adding bacteria?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Yes! You are transferring living bacteria. They multiply and ferment the whole batch overnight. The main species is <span class="kw">Lactobacillus acidophilus</span>."</p>
+      </div>
+
+      <p>Other famous fermented foods from LAB:</p>
+      <p>→ <span class="kw">Idli and Dosa</span> — Rice and urad dal are fermented by bacteria and wild yeast. The batter rises, becomes soft, and full of nutrition.</p>
+      <p>→ <span class="kw">Cheese</span> — Different bacteria strains create different textures and tastes. Cheddar? Bacteria. Blue cheese? Fungi (Penicillium).</p>
+      <p>→ <span class="kw">Sauerkraut and Kimchi</span> — Vegetables fermented with Lactobacillus. Full of probiotics.</p>
+      <p>→ <span class="kw">Pickle (Achar)</span> — Salt and natural bacteria preserve vegetables through fermentation.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🍺 2. Alcoholic Beverages and Bread</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What about bread? How does it become fluffy?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "That's <span class="kw">Saccharomyces cerevisiae</span> — baker's yeast. It eats the sugar in the dough and releases <span class="kw">carbon dioxide gas</span>. The gas is trapped in the dough, making it rise and become light."</p>
+      </div>
+
+      <p>The same yeast does something different in alcohol-making:</p>
+      <p>→ In <span class="kw">wine</span>, yeast ferments grapes and produces ethanol.</p>
+      <p>→ In <span class="kw">beer</span>, yeast ferments barley sugars (malted barley).</p>
+      <p>→ In <span class="kw">toddy</span>, natural wild yeast ferments coconut or palm sap.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🧫 3. Single Cell Protein (SCP)</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "Professor, can microbes be eaten directly as food?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Yes! This is called <span class="kw">Single Cell Protein (SCP)</span>. We grow microbes — mostly yeast, algae, or bacteria — in large tanks, harvest them, dry them, and use them as protein powder."</p>
+      </div>
+
+      <p><span class="kw">Spirulina</span> is the most famous example. It is a blue-green algae (cyanobacterium) that is 60–70% protein by weight. It grows fast, needs little space, and is incredibly nutritious.</p>
+      <p>→ Used in protein supplements, health bars, and emergency food relief</p>
+      <p>→ NASA even studied it for long space missions</p>
+      <p><span class="kw">Fusarium</span> fungus protein is sold as <span class="kw">Quorn</span> — a meat substitute popular in Europe.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🧪 4. Food Enzymes from Microbes</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What else do microbes give us?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Enzymes! These are chemical tools that process food. <span class="kw">Rennet</span> — once extracted from calf stomachs — is now produced by bacteria and used to coagulate milk for cheese. <span class="kw">Amylase</span> from Aspergillus breaks starch into sugar in bread baking."</p>
+      </div>
+
+      <p>Other important microbial enzymes:</p>
+      <p>→ <span class="kw">Protease</span> — Breaks proteins. Used in meat tenderizers and beer clarification.</p>
+      <p>→ <span class="kw">Lipase</span> — Breaks fats. Used in cheese ripening and dairy processing.</p>
+      <p>→ <span class="kw">Lactase</span> — Breaks lactose. Used to make lactose-free milk.</p>
+      <p>→ <span class="kw">Pectinase</span> — Breaks fruit pulp. Used in making clear fruit juices.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🎨 5. Food Colors and Flavors from Microbes</p>
+
+      <p>→ <span class="kw">Monascus purpureus</span> (Red Yeast Rice) — produces red pigment used in traditional Chinese and Indian fermented rice and beverages</p>
+      <p>→ <span class="kw">Riboflavin (Vitamin B2)</span> — produced by Ashbya gossypii fungus, used as a natural yellow color (E101) in food</p>
+      <p>→ <span class="kw">Diacetyl</span> — produced by Leuconostoc bacteria — gives butter its characteristic flavour. Used in popcorn butter flavoring.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">💊 6. Vitamins and Organic Acids from Microbes</p>
+
+      <p>→ <span class="kw">Vitamin B12</span> is exclusively made by bacteria — we get it from animal products or supplements made by Pseudomonas bacteria.</p>
+      <p>→ <span class="kw">Citric acid</span> — produced by Aspergillus niger — used as a preservative and flavor enhancer in countless packaged foods.</p>
+      <p>→ <span class="kw">Lactic acid</span> — produced by Lactobacillus — used as a natural preservative and pH regulator.</p>
+      <p>→ <span class="kw">Acetic acid</span> — produced by Acetobacter — is vinegar. Used in pickles, sauces, and food preservation.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="char">Arjun</span> learned that microbes are the original food scientists.</p>
+        <p class="mt-1"><span class="char-r">Rina</span> was shocked that the curd she makes at home involves live bacteria.</p>
+        <p class="mt-1"><span class="char-p">Professor</span> explained 6 key areas: Fermented foods (LAB, yeast), Alcoholic beverages and bread (Saccharomyces), Single Cell Protein (Spirulina, Quorn), Enzymes (Rennet, Amylase, Protease), Colors and Flavors (Monascus, Diacetyl), and Vitamins &amp; Acids (B12, Citric acid, Lactic acid).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 2 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-yellow-400/20 text-yellow-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 02</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 1 · Episode 2</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Safety Mission — HACCP Explained</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">The system that keeps your food safe</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-yellow-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun and Rina visit a food processing factory for their college project. A food safety officer, Dr. Meera, welcomes them.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Dr. Meera, how does this factory make sure no one gets sick from the food they produce?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "Great question. We follow a very strict system called <span class="kw">HACCP</span>."</p>
+        <p class="mt-2"><span class="char-r">Rina:</span> "Hack-what?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "HACCP — <span class="kw">Hazard Analysis and Critical Control Points</span>. It is a science-based food safety system used globally."</p>
+      </div>
+
+      <p>HACCP was originally developed by NASA and the US Army in the 1960s to make sure astronaut food was 100% safe in space — you cannot afford food poisoning when you're orbiting Earth!</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "So what exactly is a hazard in food?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "A hazard is anything in food that can harm a person. There are three types."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">⚠️ Three Types of Food Hazards</p>
+
+      <p><span class="kw">1. Biological Hazards</span> — Bacteria, viruses, parasites. Examples: Salmonella in eggs, E. coli in meat, Hepatitis A virus in seafood.</p>
+      <p><span class="kw">2. Chemical Hazards</span> — Pesticides, cleaning agents, food additives at wrong doses, heavy metals like lead or mercury.</p>
+      <p><span class="kw">3. Physical Hazards</span> — Foreign objects like glass, metal, bone fragments, plastic pieces, or stones in food.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🧭 The 7 Principles of HACCP</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 1: Conduct a Hazard Analysis</p>
+      <div class="dialogue-block">
+        <p><span class="char-d">Dr. Meera:</span> "First, we look at every single step in making our product — from raw materials arriving at our gate to the product leaving in a truck — and we ask: 'What can go wrong here?' We list all possible biological, chemical, and physical hazards at each step. This is the <span class="kw">hazard analysis</span>."</p>
+      </div>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 2: Identify Critical Control Points (CCPs)</p>
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "So what happens after we find all the hazards?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "We find the <span class="kw">Critical Control Points</span> — the specific steps where we CAN control the hazard and MUST control it to keep food safe. For example, the cooking step is a CCP because proper temperature kills bacteria."</p>
+      </div>
+
+      <p>A CCP is different from just any step — it's the critical checkpoint. If this step fails, the hazard cannot be corrected later.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 3: Establish Critical Limits</p>
+      <div class="dialogue-block">
+        <p><span class="char-d">Dr. Meera:</span> "At every CCP, we set a <span class="kw">critical limit</span> — the maximum or minimum value that must be met. For cooking chicken, the critical limit is an internal temperature of at least <span class="kw">74°C (165°F)</span>. Below that, harmful bacteria survive."</p>
+      </div>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 4: Establish Monitoring Procedures</p>
+      <p>Someone must watch and measure each CCP constantly. We check the temperature of the oven every 15 minutes. We record it in a log. This is the <span class="kw">monitoring procedure</span>. No guessing — only data.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 5: Establish Corrective Actions</p>
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What if something goes wrong?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "That's Principle 5 — <span class="kw">corrective actions</span>. We already have a plan written. If the oven temperature drops below 74°C, we immediately re-cook the product or destroy that batch. We don't sell unsafe food. Ever."</p>
+      </div>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 6: Establish Verification Procedures</p>
+      <p><span class="kw">Verification</span> means checking that the whole HACCP system is actually working correctly. This includes internal audits, reviewing records, and occasionally testing the final product in a lab.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 7: Establish Record-Keeping and Documentation</p>
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "Why is documentation important?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Meera:</span> "If there's a food safety problem, we can trace exactly what happened, when, and in which batch. <span class="kw">Documentation</span> is the proof that we followed all procedures. Without records, nothing is verifiable."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">📋 Pre-requisite Programs for HACCP</p>
+
+      <p>Before HACCP can work, a factory must have <span class="kw">pre-requisite programs (PRPs)</span> in place:</p>
+      <p>→ <span class="kw">GMP (Good Manufacturing Practices)</span> — Clean facilities, proper hygiene, well-maintained equipment</p>
+      <p>→ <span class="kw">SSOP (Sanitation Standard Operating Procedures)</span> — How to clean and disinfect everything</p>
+      <p>→ <span class="kw">Pest control</span> — No insects, rodents, or birds near food</p>
+      <p>→ <span class="kw">Employee training</span> — Every worker knows safe food handling</p>
+      <p>→ <span class="kw">Traceability</span> — Ability to track every ingredient back to its source</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🌍 HACCP in India and the World</p>
+
+      <p>HACCP is recognized and required by:</p>
+      <p>→ <span class="kw">FSSAI</span> (Food Safety and Standards Authority of India)</p>
+      <p>→ <span class="kw">Codex Alimentarius</span> — International food standards body (FAO/WHO)</p>
+      <p>→ <span class="kw">FDA</span> (USA) and <span class="kw">EFSA</span> (Europe)</p>
+      <p>All large-scale food processors must implement HACCP or its advanced version, <span class="kw">ISO 22000</span>.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="char">Arjun</span> and <span class="char-r">Rina</span> toured a factory and learned that food safety is a science, not luck.</p>
+        <p class="mt-1"><span class="char-d">Dr. Meera</span> explained HACCP: 3 types of hazards (biological, chemical, physical) and 7 principles: Hazard Analysis → Identify CCPs → Critical Limits → Monitoring → Corrective Actions → Verification → Documentation.</p>
+        <p class="mt-1">Pre-requisite programs (GMP, SSOP) must exist before HACCP can be applied.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 3 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-yellow-400/20 text-yellow-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 03</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 1 · Episode 3</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Fat Illusion — Fat Substitutes</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Types, safety concerns, and the low-fat food trap</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-yellow-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun and Rina are in a supermarket. Rina picks up a packet of low-fat chips.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "These chips have only 2 grams of fat! That's amazing. I can eat the whole bag!"</p>
+        <p class="mt-2"><span class="char">Arjun:</span> "But how can chips have almost no fat? They're fried, right?"</p>
+      </div>
+
+      <p class="scene">🎬 Scene: Professor calls them on video and sees the chips packet.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-p">Professor:</span> "That's because of <span class="kw">fat substitutes</span>, Rina. And before you eat the whole bag, let me explain what they are — and why you should be careful."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🧈 Why Do We Need Fat Substitutes?</p>
+
+      <p>Fat gives food its taste, texture, and creamy feel. But fat has <span class="kw">9 calories per gram</span> — more than double of carbohydrates or protein (which give 4 cal/gram).</p>
+
+      <p>With the rise of obesity and heart disease, food companies created <span class="kw">fat substitutes</span> — ingredients that mimic fat's properties but have fewer or zero calories.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">📦 Types of Fat Substitutes</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Type 1: Carbohydrate-Based Fat Substitutes</p>
+      <div class="dialogue-block">
+        <p><span class="char-p">Professor:</span> "These use carbohydrates — usually starch, fiber, or gums — to mimic the smooth, creamy texture of fat. They absorb a lot of water and create a gel-like structure."</p>
+      </div>
+
+      <p>→ <span class="kw">Maltodextrin</span> — Made from starch. Used in salad dressings, frozen desserts. Gives creamy mouthfeel. Has some calories (4 cal/g).</p>
+      <p>→ <span class="kw">Polydextrose</span> — A synthetic polymer of glucose. Adds bulk and texture with very low calories (1 cal/g).</p>
+      <p>→ <span class="kw">Cellulose gel</span> — Indigestible fiber. Zero calories. Used in ice cream and salad dressings.</p>
+      <p>→ <span class="kw">Inulin</span> — Derived from chicory. Acts as a prebiotic. Used in yogurt and baked goods.</p>
+      <p>→ <span class="kw">Oatrim</span> — Made from oat flour hydrolysate. Heart-healthy, contains beta-glucan.</p>
+
+      <p>Safety: Carbohydrate-based substitutes are generally safe. Excess polydextrose can cause bloating or diarrhea.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Type 2: Protein-Based Fat Substitutes</p>
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "Can protein replace fat? That sounds too good to be true."</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "In certain forms, yes! When protein particles are made very small and round — microparticulated — they feel slippery and creamy in the mouth, just like fat does."</p>
+      </div>
+
+      <p>→ <span class="kw">Simplesse</span> — Made from microparticulated whey protein or egg white protein. Used in ice cream, salad dressings, cream cheese. About 1–2 cal/g.</p>
+      <p>→ <span class="kw">Trailblazer</span> — Whey protein concentrate based. Used in dairy products.</p>
+
+      <p>Safety Concern: <span class="kw">Cannot be used for frying or high-heat cooking</span>. Heat destroys the microparticle structure. People with <span class="kw">dairy or egg allergies</span> must avoid these.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Type 3: Fat-Based Fat Substitutes (Synthetic Fats)</p>
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Wait — fat substitutes made of fat? How does that reduce calories?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "These are chemically modified fats that your body <span class="kw">cannot digest</span>. So they pass through without being absorbed. No digestion = no calories."</p>
+      </div>
+
+      <p>→ <span class="kw">Olestra (Olean)</span> — Made by attaching 6–8 fatty acids to a sucrose molecule. Human digestive enzymes cannot break this bond. Zero calories. Can be used for frying.</p>
+      <p>→ <span class="kw">Salatrim</span> — A modified triglyceride. About 5 cal/g instead of 9 cal/g.</p>
+      <p>→ <span class="kw">Caprenin</span> — A modified fat used in chocolate.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚠️ Safety Concerns of Fat Substitutes</p>
+
+      <p><span class="kw">Olestra's safety concerns:</span></p>
+      <p>→ <span class="kw">Anal leakage and diarrhea</span> — Because olestra passes undigested, in large amounts it causes gastrointestinal distress.</p>
+      <p>→ <span class="kw">Fat-soluble vitamin loss</span> — Olestra binds to fat-soluble vitamins (A, D, E, K) in the gut, pulling them out of the body. Manufacturers now fortify olestra-containing foods with these vitamins.</p>
+      <p>→ <span class="kw">Carotenoid depletion</span> — Olestra drags carotenoids (like beta-carotene, lycopene) out of the body.</p>
+
+      <p><span class="kw">General concerns for all fat substitutes:</span></p>
+      <p>→ <span class="kw">Compensation effect</span> — Research shows people who eat low-fat products often eat more of other foods, canceling out any calorie saving.</p>
+      <p>→ <span class="kw">Altered gut microbiome</span> — Some substitutes change the composition of gut bacteria over time.</p>
+      <p>→ <span class="kw">Not suitable for children</span> — Fat is essential for brain development.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "So low-fat chips are not really a health food?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "They are an engineering achievement. But nutrition-wise? Whole foods with natural fats in reasonable amounts are far better for you."</p>
+        <p class="mt-2"><span class="char-r">Rina:</span> "I'm putting the chips back."</p>
+      </div>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>3 types of fat substitutes: <span class="kw">Carbohydrate-based</span> (maltodextrin, inulin, cellulose — safe, low cal), <span class="kw">Protein-based</span> (Simplesse — cannot be heated, allergy concern), <span class="kw">Fat-based</span> (Olestra — zero cal but causes GI issues, drains fat-soluble vitamins A/D/E/K and carotenoids).</p>
+        <p class="mt-1">General concern: compensation effect and not suitable for children.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 4 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-yellow-400/20 text-yellow-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 04</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 1 · Episode 4</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Body's Protest — Alcohol, Drugs &amp; Smoking</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Physiological disturbances explained through a difficult story</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-yellow-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun's uncle, Raj, has been hospitalised. The doctor, Dr. Arora, explains the situation to the family.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-d">Dr. Arora:</span> "Your uncle has been a heavy drinker for 20 years. His liver, brain, and heart have all been affected. These are not coincidences — alcohol causes systematic physiological damage."</p>
+        <p class="mt-2"><span class="char">Arjun:</span> "Can you explain exactly what alcohol does to the body, Doctor?"</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🍺 SECTION A: Alcoholism — Physiological Disturbances</p>
+
+      <p><span class="kw">Ethanol (alcohol)</span> is a small molecule that crosses cell membranes easily and affects almost every organ system.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Liver — The First Victim</p>
+      <p>The liver is the primary site of alcohol metabolism. The enzyme <span class="kw">alcohol dehydrogenase (ADH)</span> converts ethanol to <span class="kw">acetaldehyde</span>, which is even more toxic than alcohol.</p>
+
+      <p>Progressive stages of liver damage:</p>
+      <p>→ Stage 1: <span class="kw">Fatty liver (hepatic steatosis)</span> — Fat accumulates in liver cells. Often reversible if drinking stops.</p>
+      <p>→ Stage 2: <span class="kw">Alcoholic hepatitis</span> — Inflammation of the liver. Jaundice, pain, fever. May be reversible.</p>
+      <p>→ Stage 3: <span class="kw">Liver cirrhosis</span> — Liver cells die and are replaced by scar tissue. Irreversible.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Brain and Nervous System</p>
+      <p>Alcohol is a <span class="kw">CNS depressant</span>. It enhances the inhibitory neurotransmitter <span class="kw">GABA</span> and blocks the excitatory neurotransmitter <span class="kw">glutamate</span>.</p>
+      <p>→ <span class="kw">Wernicke's encephalopathy</span> — Brain damage from thiamine (Vitamin B1) deficiency caused by alcohol.</p>
+      <p>→ <span class="kw">Korsakoff's syndrome</span> — Memory disorder. Patient cannot form new memories and creates false ones (confabulation).</p>
+      <p>→ <span class="kw">Peripheral neuropathy</span> — Nerve damage in limbs, causing numbness, pain, and weakness.</p>
+      <p>→ <span class="kw">Brain shrinkage</span> — Chronic alcoholism causes loss of brain volume and cognitive decline.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Heart and Cardiovascular System</p>
+      <p>→ <span class="kw">Alcoholic cardiomyopathy</span> — Heart muscle weakens and cannot pump efficiently.</p>
+      <p>→ <span class="kw">Arrhythmias</span> — Irregular heartbeats, including atrial fibrillation.</p>
+      <p>→ <span class="kw">Hypertension</span> — Chronic drinking raises blood pressure significantly.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Nutrition and Metabolism</p>
+      <p>→ Alcohol provides <span class="kw">empty calories</span> (7 cal/g) — energy without nutrition.</p>
+      <p>→ It impairs absorption of <span class="kw">thiamine (B1), folate, B6, B12, zinc, and magnesium</span>.</p>
+      <p>→ <span class="kw">Hypoglycemia</span> — Alcohol blocks gluconeogenesis, causing blood sugar to drop dangerously.</p>
+      <p>→ <span class="kw">Pancreatitis</span> — Inflammation of the pancreas, causing severe abdominal pain.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">💊 SECTION B: Drug Abuse — Physiological Disturbances</p>
+
+      <p><span class="kw">Stimulants</span> (cocaine, amphetamines, MDMA):</p>
+      <p>→ Flood the brain with <span class="kw">dopamine</span>, creating intense pleasure but exhausting the reward system.</p>
+      <p>→ Cause <span class="kw">tachycardia</span> (rapid heart rate), <span class="kw">hypertension</span>, and risk of <span class="kw">cardiac arrest</span>.</p>
+      <p>→ Long-term: <span class="kw">dopamine depletion</span> — the person cannot feel pleasure without the drug. This is addiction.</p>
+
+      <p><span class="kw">Opioids</span> (heroin, morphine, prescription painkillers):</p>
+      <p>→ Bind to <span class="kw">opioid receptors</span> in the brain, blocking pain and creating euphoria.</p>
+      <p>→ Cause <span class="kw">respiratory depression</span> — breathing slows dangerously. Overdose kills by suffocation.</p>
+      <p>→ <span class="kw">Tolerance and dependence</span> — the body requires the drug just to feel normal.</p>
+
+      <p><span class="kw">Cannabis</span>:</p>
+      <p>→ THC binds to <span class="kw">endocannabinoid receptors</span>.</p>
+      <p>→ Long-term heavy use linked to <span class="kw">amotivational syndrome</span>, memory impairment, and increased risk of psychosis.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🚬 SECTION C: Smoking — Physiological Disturbances</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "My uncle also smoked. What does smoking do?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Arora:</span> "Tobacco smoke contains over <span class="kw">4,000 chemicals</span>, including at least 70 known carcinogens."</p>
+      </div>
+
+      <p><span class="kw">Respiratory System:</span></p>
+      <p>→ <span class="kw">Chronic Bronchitis</span> — Inflammation of the airways, persistent cough, excess mucus production.</p>
+      <p>→ <span class="kw">Emphysema</span> — Air sacs (alveoli) in the lungs are destroyed. Irreversible. Together called <span class="kw">COPD</span>.</p>
+      <p>→ <span class="kw">Lung Cancer</span> — Carcinogens in smoke directly damage DNA in lung cells.</p>
+
+      <p><span class="kw">Cardiovascular System:</span></p>
+      <p>→ <span class="kw">Nicotine</span> raises heart rate and blood pressure, increasing cardiac workload.</p>
+      <p>→ <span class="kw">Carbon monoxide (CO)</span> from smoke binds to hemoglobin (200x stronger than oxygen), causing chronic <span class="kw">hypoxia</span>.</p>
+      <p>→ <span class="kw">Atherosclerosis</span> — Damaged blood vessel walls accumulate cholesterol plaques, leading to heart attack or stroke.</p>
+
+      <p><span class="kw">Nutrition Effects of Smoking:</span></p>
+      <p>→ Significantly depletes <span class="kw">Vitamin C</span> — smokers need 35 mg/day more than non-smokers.</p>
+      <p>→ Impairs absorption of <span class="kw">calcium</span>, leading to weaker bones and increased osteoporosis risk.</p>
+      <p>→ <span class="kw">Cadmium</span> in cigarette smoke accumulates in kidneys and bones.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="kw">Alcohol</span>: Fatty liver → Hepatitis → Cirrhosis; Brain damage (Wernicke's, Korsakoff's); Heart (cardiomyopathy, arrhythmia); Nutrient depletion (B1, folate, zinc).</p>
+        <p class="mt-1"><span class="kw">Drugs</span>: Stimulants (dopamine flood, cardiac arrest); Opioids (respiratory depression, tolerance); Cannabis (endocannabinoid disruption).</p>
+        <p class="mt-1"><span class="kw">Smoking</span>: COPD, lung cancer; CO blocks oxygen; depletes Vitamin C, calcium; cadmium toxicity.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ UNIT 2 ═══════════════════════════════ -->
+<div class="mb-3 mt-8 sm:mt-10">
+  <div class="unit-divider mb-5 sm:mb-6"></div>
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+    <span class="bg-green-400 text-slate-900 text-xs font-black px-3 py-1 rounded-full tracking-widest whitespace-nowrap">UNIT 2</span>
+    <h2 class="text-lg sm:text-xl lg:text-2xl font-black text-white leading-snug">Nutrients, Microbes &amp; Biotechnology</h2>
+  </div>
+</div>
+
+<!-- EP 5 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-green-400/20 text-green-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 05</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 2 · Episode 5</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Mineral Kingdom — Micronutrients &amp; Vitamins</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Calcium, Magnesium, Iron, Zinc, Copper, Selenium and Vitamins</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-green-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: A hospital nutrition clinic. A doctor reviews the blood reports of three patients — a teenage girl, an elderly man, and a young athlete — and explains their mineral deficiencies.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-d">Doctor:</span> "Each of you is missing something small but critical. Micronutrients are needed only in tiny amounts, but without them, the body falls apart."</p>
+        <p class="mt-2"><span class="char">Arjun:</span> (observing as an intern) "Let's go through each one."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🦴 1. Calcium (Ca)</p>
+      <p><span class="kw">RDA:</span> 1000 mg/day for adults; 1200 mg for women over 50</p>
+      <p>→ Builds and maintains bones and teeth (99% of body's calcium is in bone)</p>
+      <p>→ Essential for <span class="kw">muscle contraction</span> — including the heart muscle</p>
+      <p>→ Required for <span class="kw">nerve transmission</span> and blood clotting</p>
+      <p><span class="kw">Deficiency:</span> Hypocalcemia — muscle cramps, tetany, osteoporosis, rickets in children</p>
+      <p><span class="kw">Sources:</span> Milk, cheese, yogurt, ragi, sesame seeds, green leafy vegetables</p>
+      <p><span class="kw">Absorption enhanced by:</span> Vitamin D, Vitamin C, acidic pH</p>
+      <p><span class="kw">Absorption inhibited by:</span> Phytates, oxalates, excess phosphorus, high fiber</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚡ 2. Magnesium (Mg)</p>
+      <p><span class="kw">RDA:</span> 400–420 mg/day (men), 310–320 mg/day (women)</p>
+      <p>→ Cofactor for over <span class="kw">300 enzyme reactions</span> in the body</p>
+      <p>→ Essential for <span class="kw">ATP synthesis</span> — all energy production in cells requires magnesium</p>
+      <p>→ Regulates calcium channels — controls muscle relaxation</p>
+      <p><span class="kw">Deficiency:</span> Muscle cramps, insomnia, anxiety, irregular heartbeat, hypertension, insulin resistance</p>
+      <p><span class="kw">Sources:</span> Nuts, seeds, dark chocolate, leafy greens, whole grains, legumes</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🩸 3. Iron (Fe)</p>
+      <p><span class="kw">RDA:</span> 8 mg (men), 18 mg (premenopausal women)</p>
+      <p>→ Core component of <span class="kw">hemoglobin</span> — the protein in red blood cells that carries oxygen</p>
+      <p>→ Component of <span class="kw">myoglobin</span> — oxygen storage in muscle</p>
+      <p><span class="kw">Forms of iron:</span></p>
+      <p>→ <span class="kw">Heme iron</span> — From animal sources. Absorbed at 15–35%.</p>
+      <p>→ <span class="kw">Non-heme iron</span> — From plant sources. Absorbed at 2–20%.</p>
+      <p><span class="kw">Deficiency:</span> Iron deficiency anemia — fatigue, pale skin, shortness of breath, brittle nails (koilonychia)</p>
+      <p><span class="kw">Enhanced by:</span> Vitamin C. <span class="kw">Inhibited by:</span> Calcium, tannins (tea, coffee), phytates</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🛡️ 4. Zinc (Zn)</p>
+      <p><span class="kw">RDA:</span> 11 mg (men), 8 mg (women)</p>
+      <p>→ Structural component of over <span class="kw">300 enzymes</span></p>
+      <p>→ Critical for <span class="kw">immune function</span> — development of T-cells and natural killer cells</p>
+      <p>→ Required for <span class="kw">taste and smell perception</span> — zinc deficiency causes loss of taste (ageusia)</p>
+      <p><span class="kw">Deficiency:</span> Growth retardation, poor wound healing, hair loss, impaired immunity</p>
+      <p><span class="kw">Sources:</span> Oysters (highest), red meat, poultry, beans, nuts, dairy</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔧 5. Copper (Cu)</p>
+      <p><span class="kw">RDA:</span> 900 μg/day</p>
+      <p>→ Cofactor for <span class="kw">ceruloplasmin</span> — essential for iron metabolism</p>
+      <p>→ Needed for <span class="kw">collagen synthesis</span> and <span class="kw">melanin production</span></p>
+      <p>→ Antioxidant function through <span class="kw">superoxide dismutase (SOD)</span> enzyme</p>
+      <p><span class="kw">Toxicity:</span> Wilson's disease — copper accumulates in liver, brain, eyes (Kayser-Fleischer rings)</p>
+      <p><span class="kw">Sources:</span> Liver, shellfish, nuts, seeds, dark chocolate, whole grains</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 6. Selenium (Se)</p>
+      <p><span class="kw">RDA:</span> 55 μg/day</p>
+      <p>→ Component of <span class="kw">glutathione peroxidase (GPx)</span> — a powerful antioxidant enzyme</p>
+      <p>→ Needed for <span class="kw">thyroid hormone metabolism</span> — converts T4 (inactive) to T3 (active)</p>
+      <p><span class="kw">Deficiency:</span> Keshan disease (heart disease in children), Kashin-Beck disease (joint disease)</p>
+      <p><span class="kw">Toxicity:</span> Selenosis — hair loss, nail brittleness, garlic odor in breath</p>
+      <p><span class="kw">Sources:</span> Brazil nuts (one nut = full daily requirement!), seafood, organ meats, eggs</p>
+
+      <p class="text-yellow-400 font-bold mt-4">💊 VITAMINS — Fat-Soluble and Water-Soluble</p>
+
+      <p><span class="kw">Fat-Soluble Vitamins (A, D, E, K)</span> — stored in fat tissue; can accumulate to toxic levels:</p>
+      <p>→ <span class="kw">Vitamin A (Retinol)</span> — Vision, skin health, immune function. Deficiency: night blindness, xerophthalmia.</p>
+      <p>→ <span class="kw">Vitamin D (Calciferol)</span> — Calcium absorption, bone mineralization. Made in skin from sunlight. Deficiency: rickets (children), osteomalacia (adults).</p>
+      <p>→ <span class="kw">Vitamin E (Tocopherol)</span> — Antioxidant, protects cell membranes. Sources: vegetable oils, nuts, seeds.</p>
+      <p>→ <span class="kw">Vitamin K</span> — Blood clotting, bone health. Deficiency: bleeding disorders. Sources: green leafy vegetables.</p>
+
+      <p><span class="kw">Water-Soluble Vitamins (B-complex + C)</span> — excreted in urine; must be consumed regularly:</p>
+      <p>→ <span class="kw">B1 (Thiamine)</span> — Deficiency: Beriberi, Wernicke's encephalopathy.</p>
+      <p>→ <span class="kw">B3 (Niacin)</span> — Deficiency: Pellagra (4Ds: Dermatitis, Diarrhea, Dementia, Death).</p>
+      <p>→ <span class="kw">B9 (Folate)</span> — DNA synthesis. Critical during pregnancy to prevent neural tube defects.</p>
+      <p>→ <span class="kw">B12 (Cobalamin)</span> — DNA synthesis, nerve myelin sheath. Deficiency: megaloblastic anemia.</p>
+      <p>→ <span class="kw">Vitamin C (Ascorbic acid)</span> — Collagen synthesis, antioxidant. Deficiency: Scurvy (bleeding gums, poor wound healing).</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>6 minerals: <span class="kw">Ca</span> (bones, clotting), <span class="kw">Mg</span> (300 enzymes, ATP), <span class="kw">Fe</span> (hemoglobin, oxygen), <span class="kw">Zn</span> (immunity, wound healing), <span class="kw">Cu</span> (collagen, iron release), <span class="kw">Se</span> (antioxidant GPx, thyroid).</p>
+        <p class="mt-1">Fat-soluble vitamins: A, D, E, K. Water-soluble: B-complex and Vitamin C. Key deficiency diseases: Beriberi (B1), Pellagra (B3), Scurvy (C), Rickets (D), Night Blindness (A).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 6 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-green-400/20 text-green-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 06</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 2 · Episode 6</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Sugar Shields — Microbial Polysaccharides</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">How bacteria build sugar armour and feed the food industry</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-green-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun is helping his mother make salad dressing. The bottle says "Contains Xanthan Gum." He reads it with curiosity.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Professor, what is xanthan gum? It says it's from bacteria?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Yes! It is a <span class="kw">microbial polysaccharide</span>. Bacteria make these complex sugar molecules as protection or as sticky coatings. We harvest them and use them as powerful food ingredients."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🌿 Key Microbial Polysaccharides</p>
+
+      <p class="font-semibold text-blue-300 mt-3">1. Xanthan Gum</p>
+      <p>Produced by: <span class="kw">Xanthomonas campestris</span></p>
+      <p>→ Excellent <span class="kw">viscosity</span> — thickens liquids even in very small amounts</p>
+      <p>→ <span class="kw">Pseudoplastic / shear-thinning</span> — thick at rest, thin when you shake it (perfect for salad dressings)</p>
+      <p>→ Stable across wide ranges of temperature, pH, and salt concentrations</p>
+      <p><span class="kw">Food Applications:</span> Salad dressings, ice cream, sauces, gravies, gluten-free bakery products</p>
+
+      <p class="font-semibold text-blue-300 mt-3">2. Gellan Gum</p>
+      <p>Produced by: <span class="kw">Sphingomonas elodea</span></p>
+      <p>→ Forms gels at very low concentrations — even 0.05% can gel a liquid</p>
+      <p>→ <span class="kw">High clarity</span> — gels are transparent (unlike gelatin)</p>
+      <p>→ Heat-stable — gels do not melt at room temperature</p>
+      <p><span class="kw">Food Applications:</span> Jelly desserts, dairy products, vegan gummies, plant-based milks</p>
+
+      <p class="font-semibold text-blue-300 mt-3">3. Dextran</p>
+      <p>Produced by: <span class="kw">Leuconostoc mesenteroides</span></p>
+      <p>→ Used as a <span class="kw">fat replacer</span> and texture modifier in bread</p>
+      <p><span class="kw">Medical Uses:</span> Plasma volume expander, blood thinner, and drug carrier.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">4. Pullulan</p>
+      <p>Produced by: <span class="kw">Aureobasidium pullulans</span> (a black yeast/fungus)</p>
+      <p>→ Forms very strong, <span class="kw">oxygen-barrier films</span></p>
+      <p>→ Edible and tasteless</p>
+      <p><span class="kw">Food Applications:</span> Edible coating for fruits and nuts, mouth freshener strips that dissolve on the tongue, capsule shells for supplements</p>
+
+      <p class="font-semibold text-blue-300 mt-3">5. Curdlan</p>
+      <p>Produced by: <span class="kw">Agrobacterium biovar 1</span></p>
+      <p>→ Forms a <span class="kw">heat-resistant gel</span> — becomes firmer when heated</p>
+      <p><span class="kw">Food Applications:</span> Tofu-like products, Japanese food applications, meat analogs</p>
+
+      <p class="font-semibold text-blue-300 mt-3">6. Hyaluronic Acid</p>
+      <p>Produced by: <span class="kw">Streptococcus equi</span> (industrial fermentation)</p>
+      <p>→ Can hold up to 1000x its weight in water</p>
+      <p><span class="kw">Applications:</span> Functional foods for joint health, skin health supplements, nutraceuticals.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚙️ Why Are Microbial Polysaccharides Preferred?</p>
+      <p>→ <span class="kw">Consistent quality</span> — produced in controlled fermentation tanks, not dependent on rainfall or harvest</p>
+      <p>→ <span class="kw">Scalable production</span> — large volumes can be made quickly</p>
+      <p>→ <span class="kw">Novel properties</span> — unique gelling, foaming, or emulsifying properties not found in plants</p>
+      <p>→ <span class="kw">Vegan-friendly</span> — no animal products involved (unlike gelatin)</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Key microbial polysaccharides: <span class="kw">Xanthan gum</span> (Xanthomonas, shear-thinning, food thickener), <span class="kw">Gellan gum</span> (Sphingomonas, clear gels, vegan jellies), <span class="kw">Dextran</span> (Leuconostoc, bread/medical), <span class="kw">Pullulan</span> (Aureobasidium, edible films, mouth strips), <span class="kw">Curdlan</span> (heat-set gel), <span class="kw">Hyaluronic acid</span> (joint/skin health).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 7 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-green-400/20 text-green-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 07</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 2 · Episode 7</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">Engineering Taste — Biotechnology of Food Additives, Bio Flavors &amp; Colors</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">How biotech transforms what food smells, tastes and looks like</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-green-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun visits a biotech company's R&amp;D lab during an internship. The lead researcher, Dr. Priya, walks him through the lab.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-d">Dr. Priya:</span> "Everything you taste, smell, and see in packaged food today has been touched by biotechnology. Let me show you how."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🧪 Part 1: Biotechnology of Food Additives</p>
+
+      <p class="font-semibold text-blue-300 mt-3">A. Preservatives via Biotechnology</p>
+      <p><span class="kw">Nisin</span> — A natural antibiotic peptide produced by <span class="kw">Lactococcus lactis</span> bacteria. The only bacteriocin approved as a food preservative (E234). Effective against Gram-positive spoilage bacteria and pathogens like Listeria. Used in cheese, canned foods, and processed meats.</p>
+      <p><span class="kw">Natamycin (Pimaricin)</span> — An antifungal compound produced by Streptomyces bacteria. Applied as a surface coating on cheese rinds to prevent mould growth.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">B. Organic Acids as Preservatives</p>
+      <p>→ <span class="kw">Lactic acid</span> — Produced by LAB fermentation. Used to acidify and preserve foods.</p>
+      <p>→ <span class="kw">Citric acid</span> — 90% of the world's citric acid is produced by fermenting Aspergillus niger. Used in soft drinks, candies.</p>
+      <p>→ <span class="kw">Acetic acid (vinegar)</span> — Produced by Acetobacter aceti. A classic natural preservative.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">C. Sweeteners via Biotechnology</p>
+      <p>→ <span class="kw">High Fructose Corn Syrup (HFCS)</span> — Made using microbial enzyme <span class="kw">glucose isomerase</span> which converts glucose to fructose. Huge industry in soft drinks.</p>
+      <p>→ <span class="kw">Aspartame</span> — Amino acid components now produced by engineered bacteria, making it cheaper.</p>
+      <p>→ <span class="kw">Steviosides</span> — Natural sweeteners from Stevia plant. Now also produced by yeast engineered with stevia biosynthesis genes.</p>
+      <p>→ <span class="kw">Thaumatin</span> — The sweetest natural protein known (100,000x sweeter than sucrose). Produced by genetically engineered yeast.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🌸 Part 2: Bio Flavors</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "How is the vanilla flavoring in biscuits made?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Priya:</span> "Real vanilla comes from orchid pods — expensive and slow. Biotechnology now allows us to produce identical flavor molecules using microbes. These are called <span class="kw">bio-flavors or natural-identical flavors</span>."</p>
+      </div>
+
+      <p><span class="kw">Vanillin</span> — Engineered E. coli or S. cerevisiae can convert ferulic acid (from rice bran or sugar beet waste) into vanillin. Bio-produced vanillin is chemically identical to natural vanilla.</p>
+      <p><span class="kw">Diacetyl</span> — The buttery flavor in popcorn butter. Produced by Leuconostoc bacteria and Lactococcus lactis during fermentation.</p>
+      <p><span class="kw">Gamma-decalactone</span> — The characteristic peach and apricot flavor. Produced by <span class="kw">Yarrowia lipolytica</span> yeast.</p>
+      <p><span class="kw">2-Phenylethanol</span> — Rose flavor compound. Produced by yeast from phenylalanine.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🎨 Part 3: Bio Colors</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What about colors? Why does some yellow food coloring come from bacteria?"</p>
+        <p class="mt-2"><span class="char-d">Dr. Priya:</span> "Because synthetic dyes like Tartrazine and Sunset Yellow are under increasing scrutiny for health concerns. Biotech offers natural alternatives."</p>
+      </div>
+
+      <p><span class="kw">Riboflavin (Vitamin B2, yellow)</span> — Produced by <span class="kw">Ashbya gossypii</span> fungus. Used as natural yellow coloring (E101).</p>
+      <p><span class="kw">β-Carotene (orange/yellow)</span> — Produced by Blakeslea trispora fungus or engineered E. coli. Used in juices, margarine, dairy products.</p>
+      <p><span class="kw">Lycopene (red)</span> — The red color of tomatoes. Now produced by engineered <span class="kw">E. coli</span>. Powerful antioxidant.</p>
+      <p><span class="kw">Astaxanthin (pink/red)</span> — The pink color of salmon. Produced by the microalga <span class="kw">Haematococcus pluvialis</span>. Extremely powerful antioxidant (10x stronger than beta-carotene).</p>
+      <p><span class="kw">Phycocyanin (blue)</span> — Brilliant blue pigment from Spirulina. Only natural blue food coloring available at scale. FDA approved for candy and gum.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Food additives from biotech: Nisin (preservative from LAB), Citric acid (Aspergillus), HFCS (glucose isomerase), Vanillin (engineered yeast/E.coli).</p>
+        <p class="mt-1">Bio-flavors: Vanillin (rose &amp; buttery), Diacetyl (butter), gamma-decalactone (peach).</p>
+        <p class="mt-1">Bio-colors: Riboflavin (yellow), β-carotene (orange), Lycopene (red), Astaxanthin (pink), Phycocyanin (blue — only natural blue!).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 8 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-green-400/20 text-green-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 08</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 2 · Episode 8</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Big Three — Carbohydrates, Proteins &amp; Lipids</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Understanding the macronutrients that power all life</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-green-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun is preparing for a sports tournament. He asks Professor about what to eat for energy, muscle building, and endurance.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Professor, I need to know what to eat. I've heard 'eat carbs', 'eat protein', 'avoid fat'. What does the science actually say?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Welcome to <span class="kw">macronutrients</span> — the three pillars of nutrition. Let's go one by one."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🌾 MACRONUTRIENT 1: Carbohydrates</p>
+
+      <p>Carbohydrates are the body's <span class="kw">primary and preferred fuel source</span>. Energy: <span class="kw">4 kcal per gram</span></p>
+
+      <p class="font-semibold text-blue-300 mt-3">Classification of Carbohydrates:</p>
+
+      <p><span class="kw">1. Monosaccharides</span> — Single sugar units.</p>
+      <p>→ <span class="kw">Glucose</span> — The body's universal fuel. All cells can use it.</p>
+      <p>→ <span class="kw">Fructose</span> — Fruit sugar. Sweeter than glucose. Metabolised primarily by the liver.</p>
+      <p>→ <span class="kw">Galactose</span> — Part of milk sugar (lactose). Found combined with glucose in dairy.</p>
+
+      <p><span class="kw">2. Disaccharides</span> — Two monosaccharides joined by a glycosidic bond.</p>
+      <p>→ <span class="kw">Sucrose</span> (Glucose + Fructose) — Table sugar.</p>
+      <p>→ <span class="kw">Lactose</span> (Glucose + Galactose) — Milk sugar. Split by lactase enzyme.</p>
+      <p>→ <span class="kw">Maltose</span> (Glucose + Glucose) — Malt sugar. Found in germinating grains.</p>
+
+      <p><span class="kw">3. Oligosaccharides</span> — 3–10 sugar units.</p>
+      <p>→ <span class="kw">Raffinose, Stachyose</span> — Found in beans and legumes. Not digested by humans. Fermented by gut bacteria → gas. That's why beans cause flatulence!</p>
+      <p>→ <span class="kw">Fructooligosaccharides (FOS)</span> — Prebiotic fiber. Feeds beneficial gut bacteria.</p>
+
+      <p><span class="kw">4. Polysaccharides</span> — Hundreds to thousands of sugar units.</p>
+      <p>→ <span class="kw">Starch</span> — Storage form of energy in plants. Made of amylose (linear, 20–30%) and amylopectin (branched, 70–80%).</p>
+      <p>→ <span class="kw">Glycogen</span> — Storage form of energy in animals and humans. Stored in liver (100g) and muscles (400g).</p>
+      <p>→ <span class="kw">Cellulose</span> — Structural carbohydrate in plant cell walls. Humans cannot digest it. Forms dietary fiber.</p>
+      <p>→ <span class="kw">Pectin</span> — Found in fruit cell walls. Forms gels in the presence of sugar and acid. Used in jams.</p>
+      <p>→ <span class="kw">Chitin</span> — Structural polysaccharide in fungal cell walls and insect exoskeletons.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">💪 MACRONUTRIENT 2: Proteins</p>
+
+      <p>Proteins are made of <span class="kw">amino acids</span> — 20 standard amino acids in total. Energy: <span class="kw">4 kcal per gram</span>. But protein's main role is structure and function, not energy.</p>
+
+      <p><span class="kw">Essential Amino Acids (9)</span> — Cannot be made by the body. Mnemonic: <span class="kw">PVT TIM HaLL</span> (Phenylalanine, Valine, Threonine, Tryptophan, Isoleucine, Methionine, Histidine, Leucine, Lysine)</p>
+
+      <p>Functions of Proteins:</p>
+      <p>→ <span class="kw">Structural</span> — Collagen (connective tissue), keratin (hair, nails), actin and myosin (muscle fibers)</p>
+      <p>→ <span class="kw">Enzymatic</span> — All enzymes are proteins (amylase, lipase, protease)</p>
+      <p>→ <span class="kw">Transport</span> — Hemoglobin (oxygen), albumin (carries fatty acids, drugs)</p>
+      <p>→ <span class="kw">Immune</span> — Antibodies (immunoglobulins) are proteins</p>
+      <p>→ <span class="kw">Hormonal</span> — Insulin, glucagon, growth hormone are proteins</p>
+
+      <p>Protein Quality:</p>
+      <p>→ <span class="kw">Complete proteins</span> — Contain all 9 essential amino acids. Sources: meat, fish, eggs, dairy, soy, quinoa.</p>
+      <p>→ <span class="kw">Incomplete proteins</span> — Missing one or more essential amino acids. Most plant proteins.</p>
+      <p>→ <span class="kw">Complementary proteins</span> — Classic example: Rice + Dal (rice lacks lysine, dal lacks methionine).</p>
+      <p>→ <span class="kw">PDCAAS</span> — Protein Digestibility Corrected Amino Acid Score. Egg white scores 1.0 (maximum).</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🥑 MACRONUTRIENT 3: Lipids (Fats)</p>
+
+      <p>Lipids are <span class="kw">hydrophobic</span> molecules. Energy: <span class="kw">9 kcal per gram</span> — most energy-dense macronutrient.</p>
+
+      <p>Fatty acids by saturation:</p>
+      <p>→ <span class="kw">Saturated Fatty Acids (SFA)</span> — No double bonds. Solid at room temperature. Found in butter, ghee, coconut oil. Linked to raised LDL cholesterol.</p>
+      <p>→ <span class="kw">Monounsaturated Fatty Acids (MUFA)</span> — One double bond. Found in olive oil, avocado. Heart-friendly.</p>
+      <p>→ <span class="kw">Polyunsaturated Fatty Acids (PUFA)</span> — Multiple double bonds. Found in sunflower oil, flaxseed, fish. Essential omega-3 and omega-6.</p>
+      <p>→ <span class="kw">Trans Fatty Acids</span> — Artificially hydrogenated fats. Raise LDL and lower HDL — the worst type. Being banned globally.</p>
+
+      <p>Essential Fatty Acids:</p>
+      <p>→ <span class="kw">DHA and EPA</span> — The active omega-3 forms. Found in fatty fish. Critical for brain development, anti-inflammatory action, heart health.</p>
+
+      <p>Other lipids:</p>
+      <p>→ <span class="kw">Phospholipids</span> — Form the <span class="kw">cell membrane bilayer</span>.</p>
+      <p>→ <span class="kw">Cholesterol</span> — Found only in animal foods. Precursor to bile acids, steroid hormones, and Vitamin D.</p>
+      <p>→ <span class="kw">Phytosterols</span> — Plant sterols that compete with cholesterol for absorption and lower blood cholesterol.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="kw">Carbohydrates</span>: Mono (glucose, fructose) → Di (sucrose, lactose) → Poly (starch, glycogen, cellulose). 4 cal/g. Primary fuel.</p>
+        <p class="mt-1"><span class="kw">Proteins</span>: 20 amino acids (9 essential). 4 cal/g. Structural, enzymatic, hormonal, immune functions.</p>
+        <p class="mt-1"><span class="kw">Lipids</span>: 9 cal/g. SFA (solid, bad in excess), MUFA (olive oil, good), PUFA (omega-3/6, essential). Phospholipids (cell membranes), cholesterol (hormones).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ UNIT 3 ═══════════════════════════════ -->
+<div class="mb-3 mt-8 sm:mt-10">
+  <div class="unit-divider mb-5 sm:mb-6"></div>
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+    <span class="bg-purple-400 text-slate-900 text-xs font-black px-3 py-1 rounded-full tracking-widest whitespace-nowrap">UNIT 3</span>
+    <h2 class="text-lg sm:text-xl lg:text-2xl font-black text-white leading-snug">Nanotechnology in Food</h2>
+  </div>
+</div>
+
+<!-- EP 9 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-purple-400/20 text-purple-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 09</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 3 · Episode 9</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Tiny Law — Policies on Nanomaterials in Food</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Global regulations for the world's smallest food ingredients</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-purple-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun attends a food science policy conference. A government regulator, Ms. Kavitha, is presenting on the safety of nanotechnology in food.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "Ms. Kavitha, what exactly is a nanomaterial? And why do we need special policies for it?"</p>
+        <p class="mt-2"><span class="char-d">Ms. Kavitha:</span> "A <span class="kw">nanomaterial</span> is any material with at least one dimension between <span class="kw">1 and 100 nanometres</span>. One nanometre is one billionth of a metre. A human hair is about 80,000 nm wide. At this scale, materials behave very differently from their bulk form — and that's exactly why we need special rules."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 Why Are Nanomaterials Concerning in Food?</p>
+
+      <p>→ <span class="kw">Surface area increases dramatically</span> — making nanomaterials much more reactive.</p>
+      <p>→ Nanoparticles can cross biological barriers — including the <span class="kw">gut lining, blood-brain barrier</span>, and even cell membranes.</p>
+      <p>→ Some nanoparticles accumulate in organs and tissues, potentially causing long-term harm.</p>
+      <p>→ Traditional toxicology methods don't always apply — a substance safe at normal size may be toxic at nano scale.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">📜 Global Policies and Regulatory Frameworks</p>
+
+      <p class="font-semibold text-blue-300 mt-3">1. European Union (EFSA) — Strictest</p>
+      <p>→ <span class="kw">EU Regulation No. 1169/2011</span> — requires engineered nanomaterials in food to be labeled with the word "nano" in brackets — e.g., "Titanium dioxide [nano]".</p>
+      <p>→ <span class="kw">Novel Foods Regulation (EU 2015/2283)</span> — Any food containing ENMs requires pre-market safety assessment by EFSA.</p>
+      <p>→ <span class="kw">Titanium dioxide (E171)</span> — The EU banned TiO2 as a food additive in 2022 after EFSA concluded it could not be ruled out as genotoxic (capable of damaging DNA).</p>
+
+      <p class="font-semibold text-blue-300 mt-3">2. United States (FDA) — Case-by-Case</p>
+      <p>→ FDA uses a case-by-case approach; recommends pre-market consultation for nano-food ingredients.</p>
+      <p>→ <span class="kw">GRAS (Generally Recognized As Safe)</span> status does not automatically transfer from bulk to nano form.</p>
+      <p>→ No mandatory labeling for nanomaterials in the USA currently.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">3. India (FSSAI) — Advisory Stage</p>
+      <p>→ India's FSSAI has issued draft regulations acknowledging nanotechnology in food but has not yet passed comprehensive binding rules.</p>
+      <p>→ India follows an advisory framework encouraging voluntary reporting by manufacturers.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">4. Codex Alimentarius (Global)</p>
+      <p>→ Key principle: <span class="kw">Pre-market safety assessment</span> is required before any engineered nanomaterial enters the food supply.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚠️ The Precautionary Principle</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-d">Ms. Kavitha:</span> "The most important principle guiding nano food policy globally is the <span class="kw">precautionary principle</span> — when there is scientific uncertainty about safety, we err on the side of caution. We do not wait for definitive proof of harm before taking protective action."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🏭 Nanomaterials Currently Under Watch</p>
+      <p>→ <span class="kw">Silver nanoparticles (AgNPs)</span> — Antimicrobial. Used in food packaging.</p>
+      <p>→ <span class="kw">Zinc oxide nanoparticles (ZnO NPs)</span> — Antimicrobial, used in packaging coatings. Pending safety evaluation.</p>
+      <p>→ <span class="kw">Silicon dioxide (SiO2, E551)</span> — Used as anti-caking agent in powders. Under review for nano form safety.</p>
+      <p>→ <span class="kw">TiO2 (E171)</span> — Was used as a whitener in candy, icing, and sauces. Now banned in the EU.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Nanomaterials: 1–100 nm, behave differently from bulk materials, can cross biological barriers.</p>
+        <p class="mt-1">EU: Most strict — Novel Foods Regulation requires pre-market approval; labeling mandatory; TiO2 banned. USA: Case-by-case, GRAS doesn't transfer to nano, no mandatory labeling. India: Advisory stage via FSSAI. Codex: Pre-market safety assessment required globally. Key principle: Precautionary principle.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 10 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-purple-400/20 text-purple-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 10</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 3 · Episode 10</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">From Lab to Shelf — Food Product Development</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">The complete journey of creating a new food product</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-purple-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Rina wants to launch her own health snack brand. She visits a food product development consultant, Mr. Surya.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "I have an idea for a millet-based energy bar. How do I take it from my kitchen to a supermarket shelf?"</p>
+        <p class="mt-2"><span class="char-d">Mr. Surya:</span> "Food product development is a structured, multi-stage process. Let me walk you through each step."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">📊 Step 1: Idea Generation and Concept Development</p>
+      <p>Good ideas come from:</p>
+      <p>→ <span class="kw">Market research</span> — What are consumers missing? What trends are growing?</p>
+      <p>→ <span class="kw">Consumer surveys and focus groups</span> — What do people want but can't find?</p>
+      <p>→ <span class="kw">Competitor analysis</span> — What's already out there? What can be improved?</p>
+      <p>The output is a <span class="kw">product concept</span>. Rina's: "A millet-energy bar for college students — high fiber, low sugar, regional Indian flavors."</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🧪 Step 2: Feasibility Study</p>
+      <p>→ <span class="kw">Technical feasibility</span> — Can this be made with current technology?</p>
+      <p>→ <span class="kw">Regulatory feasibility</span> — Are all ingredients approved?</p>
+      <p>→ <span class="kw">Economic feasibility</span> — Can we make it profitably?</p>
+      <p>→ <span class="kw">Market feasibility</span> — Is there real demand?</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🍽️ Step 3: Formulation and Recipe Development</p>
+      <p>→ Select ingredients based on nutritional goals, cost, availability, and functionality</p>
+      <p>→ Test multiple formulations systematically — this is <span class="kw">Design of Experiments (DoE)</span> applied to food</p>
+      <p>→ Evaluate each formulation for: Appearance, Aroma, Flavor, Texture, Mouthfeel</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "So I need to make many batches with different ratios and test them all?"</p>
+        <p class="mt-2"><span class="char-d">Mr. Surya:</span> "Yes! And you need trained tasters, not just your friends. <span class="kw">Sensory evaluation</span> panels use scientific methods — triangle tests, ranking tests, and descriptive analysis."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🏭 Step 4: Process Development and Scale-Up</p>
+      <p>→ <span class="kw">Pilot plant scale-up</span> — make the product in a medium-scale test kitchen/facility</p>
+      <p>→ Identify problems with scaling — mixing time, heat distribution, baking uniformity</p>
+      <p>→ Document process parameters precisely: temperature, time, pressure, mixing speed</p>
+      <p>→ <span class="kw">HACCP planning</span> for the new process</p>
+
+      <p class="text-yellow-400 font-bold mt-4">📦 Step 5: Packaging Development</p>
+      <p>→ <span class="kw">Material selection</span> — Primary (contact with food), secondary (box), tertiary (shipping carton)</p>
+      <p>→ <span class="kw">Modified Atmosphere Packaging (MAP)</span> — Replace air inside with nitrogen/CO2 to extend shelf life</p>
+      <p>→ <span class="kw">ASLT (Accelerated Shelf Life Testing)</span> — Shelf life testing at actual and accelerated conditions</p>
+      <p>→ Label design compliance with FSSAI/FDA regulations (ingredient list, nutrition facts, allergen labeling)</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 Step 6: Product Testing and Quality Assurance</p>
+      <p>→ <span class="kw">Nutritional analysis</span> — Lab-measured, not just calculated from tables</p>
+      <p>→ <span class="kw">Microbiological testing</span> — Total plate count, yeast/mould, pathogens (Salmonella, Listeria, E. coli)</p>
+      <p>→ <span class="kw">Chemical testing</span> — Heavy metals, pesticide residues, aflatoxins</p>
+      <p>→ <span class="kw">Consumer acceptance testing</span> — Central Location Test (CLT) with 100–200 target consumers</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🚀 Step 7: Market Launch and Commercialization</p>
+      <p>→ <span class="kw">Test market launch</span> — Limited geographic release before full rollout</p>
+      <p>→ Full production scale-up in manufacturing facility</p>
+      <p>→ Regulatory approvals (FSSAI registration/license in India)</p>
+      <p>→ <span class="kw">Continuous improvement</span> — reformulation based on market feedback</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>7 steps: <span class="kw">Idea Generation</span> → <span class="kw">Feasibility Study</span> → <span class="kw">Formulation (lab scale)</span> → <span class="kw">Process Development &amp; Scale-Up</span> → <span class="kw">Packaging Development</span> → <span class="kw">Testing &amp; QA</span> → <span class="kw">Market Launch</span>.</p>
+        <p class="mt-1">Key concepts: Sensory evaluation, HACCP in new process, ASLT, Consumer acceptance testing, FSSAI compliance.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 11 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-purple-400/20 text-purple-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 11</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 3 · Episode 11</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Invisible Shield — Nanomaterials in Food Packaging</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">How nano-science is revolutionizing how we protect food</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-purple-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun is at a packaging innovation expo. He sees a clear film labelled "Nano-barrier packaging." He approaches the product engineer, Mr. Dev.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What makes this packaging 'nano'?"</p>
+        <p class="mt-2"><span class="char-d">Mr. Dev:</span> "Inside this seemingly normal plastic film, we've embedded nanoparticles that completely transform its properties — strength, oxygen barrier, antimicrobial activity, and even smart sensing."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🛡️ Types of Nanomaterials Used in Packaging</p>
+
+      <p class="font-semibold text-blue-300 mt-3">1. Nano Clay (Montmorillonite Nanoclay)</p>
+      <p>→ Clay minerals exfoliated into nanosheets create a <span class="kw">tortuous path</span> for gas molecules — oxygen, CO2, and water vapor must navigate around many barriers.</p>
+      <p>→ Result: <span class="kw">Gas barrier improved by 50–500x</span> compared to the same plastic without nanoclay</p>
+      <p>→ Also improves mechanical strength and heat resistance</p>
+      <p>→ Used in beer bottles, juice cartons, flexible snack packaging. FDA approved for food contact.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">2. Silver Nanoparticles (AgNPs) — Antimicrobial Packaging</p>
+      <p>→ AgNPs release <span class="kw">silver ions (Ag+)</span> which disrupt bacterial cell membranes, DNA, and enzyme systems</p>
+      <p>→ Effective against E. coli, Salmonella, Staphylococcus, molds, and some viruses</p>
+      <p>→ Used in: Refrigerator liners, cutting boards, food storage containers, produce bags</p>
+      <p>→ <span class="kw">Safety concern:</span> Silver ions can migrate into food. EU and FDA have set regulatory limits.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">3. Zinc Oxide Nanoparticles (ZnO NPs)</p>
+      <p>→ Both antimicrobial and <span class="kw">UV-blocking</span> — protect food from UV-light-induced oxidation</p>
+      <p>→ Exhibit <span class="kw">anti-biofilm</span> properties — prevent bacteria from forming colonies on packaging surfaces</p>
+
+      <p class="font-semibold text-blue-300 mt-3">4. Titanium Dioxide Nanoparticles (TiO2 NPs)</p>
+      <p>→ <span class="kw">Photocatalytic</span> — when exposed to UV or visible light, generate reactive oxygen species that destroy organic contaminants and microbes</p>
+      <p>→ Used in self-cleaning packaging surfaces</p>
+
+      <p class="font-semibold text-blue-300 mt-3">5. Carbon-based Nanomaterials</p>
+      <p>→ <span class="kw">Carbon nanotubes (CNTs)</span> — Improve mechanical strength and conductivity of packaging films.</p>
+      <p>→ <span class="kw">Graphene oxide</span> — Excellent gas barrier properties in thin coatings.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">6. Nanocellulose (CNC &amp; CNF)</p>
+      <p>→ Derived from plant cellulose. Extremely strong (stronger than steel by weight), biodegradable, and renewable.</p>
+      <p>→ Excellent <span class="kw">oxygen barrier</span> when coated on packaging</p>
+      <p>→ The "green" answer to nano packaging</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🧠 Smart Nano Packaging</p>
+      <p>→ <span class="kw">Time-Temperature Indicators (TTIs)</span> — Color change sensors that show if food has been exposed to unsafe temperatures</p>
+      <p>→ <span class="kw">Freshness indicators</span> — React to spoilage gases (like ammonia) and change color — visible through the packaging</p>
+      <p>→ <span class="kw">RFID nanotags</span> — Ultra-thin antennas embedded in packaging for supply chain tracking</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Nano packaging types: <span class="kw">Nanoclay</span> (gas barrier), <span class="kw">AgNPs</span> (antimicrobial), <span class="kw">ZnO NPs</span> (UV block + antimicrobial), <span class="kw">TiO2</span> (photocatalytic), <span class="kw">CNTs/graphene</span> (mechanical strength, gas barrier), <span class="kw">Nanocellulose</span> (biodegradable, strong, green).</p>
+        <p class="mt-1">Smart packaging: TTIs, freshness indicators, RFID nanotags.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 12 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-purple-400/20 text-purple-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 12</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 3 · Episode 12</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">Eating the Invisible — Nanomaterials as Food Components</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Nanoparticles inside food — benefits and risks</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-purple-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Professor shows Arjun and Rina a research paper about nano-encapsulated vitamins in health drinks.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "Wait, are we already eating nanomaterials? In our food?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Some occur naturally, some are added intentionally. Let me explain both."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🌿 Naturally Occurring Food Nanomaterials</p>
+      <p>→ <span class="kw">Casein micelles in milk</span> — approximately 50–500 nm. Natural nanoparticles that carry calcium phosphate and fat.</p>
+      <p>→ <span class="kw">Emulsion droplets in mayonnaise</span> — Oil droplets dispersed in water at nano/micro scale</p>
+      <p>→ <span class="kw">Whey proteins</span> — Can aggregate into nanostructures at certain pH and temperatures</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 Nano Encapsulation — The Most Promising Application</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-p">Professor:</span> "The biggest revolution nanomaterials bring to food is <span class="kw">nano-encapsulation</span> — wrapping bioactive compounds inside nano-sized shells to protect and control their release."</p>
+      </div>
+
+      <p>Why encapsulate? Many nutrients (omega-3 fatty acids, curcumin, probiotics) are destroyed by heat, light, stomach acid, or oxygen before they reach where they're needed. Nano-encapsulation protects them and dramatically improves <span class="kw">bioavailability</span>.</p>
+
+      <p>Nano-encapsulation systems:</p>
+      <p>→ <span class="kw">Liposomes</span> — Spherical vesicles made of phospholipid bilayers. Can carry both water-soluble and fat-soluble compounds. Used to encapsulate vitamins, antioxidants, probiotics.</p>
+      <p>→ <span class="kw">Nanostructured lipid carriers (NLC)</span> — Improve stability of fat-soluble bioactives like Vitamin E, coenzyme Q10, curcumin.</p>
+      <p>→ <span class="kw">Nano-emulsions</span> — Oil-in-water emulsions with droplet sizes below 200 nm. Much more stable than conventional emulsions.</p>
+      <p>→ <span class="kw">Cyclodextrins</span> — Hollow ring-shaped molecules that trap hydrophobic molecules. Used to encapsulate flavors and stabilize vitamins.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 Nano-Minerals and Vitamins</p>
+      <p>→ <span class="kw">Nano iron</span> — Better bioavailability without off-tastes and color changes.</p>
+      <p>→ <span class="kw">Nano calcium</span> — Calcium carbonate nanoparticles with better solubility for fortification.</p>
+      <p>→ <span class="kw">Nano zinc oxide</span> — Used as a zinc fortification source in functional foods.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚠️ Safety Concerns of Food Nanomaterials</p>
+      <p>→ <span class="kw">Unknown long-term effects</span> — Most safety studies are short-term.</p>
+      <p>→ <span class="kw">Translocation</span> — Nanoparticles can pass through the gut lining and enter the bloodstream, reaching organs including the brain.</p>
+      <p>→ <span class="kw">Inflammation</span> — Some nanoparticles trigger inflammatory responses in gut tissue.</p>
+      <p>→ <span class="kw">Microbiome disruption</span> — Some nanoparticles alter gut bacteria composition.</p>
+      <p>→ <span class="kw">Genotoxicity</span> — Some materials (TiO2 at nano scale) show potential to damage DNA.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Natural food nanomaterials: casein micelles, emulsion droplets. Engineered: Nano-encapsulation (liposomes, NLC, nano-emulsions — improve bioavailability), Nano minerals (Fe, Ca, Zn fortification), Nano TiO2 (whitener, now banned in EU).</p>
+        <p class="mt-1">Safety concerns: Translocation, organ accumulation, genotoxicity (TiO2), microbiome disruption.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ UNIT 4 ═══════════════════════════════ -->
+<div class="mb-3 mt-8 sm:mt-10">
+  <div class="unit-divider mb-5 sm:mb-6"></div>
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+    <span class="bg-red-400 text-slate-900 text-xs font-black px-3 py-1 rounded-full tracking-widest whitespace-nowrap">UNIT 4</span>
+    <h2 class="text-lg sm:text-xl lg:text-2xl font-black text-white leading-snug">Diet, Disease &amp; Energy Balance</h2>
+  </div>
+</div>
+
+<!-- EP 13 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-red-400/20 text-red-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 13</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 4 · Episode 13</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Blueprint of Eating Well — Planning a Healthy Diet</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Science-backed principles for a diet that actually works</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-red-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun decides to improve his diet after seeing his uncle's health problems. He visits a registered dietitian, Ms. Anita.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "I want to eat healthier. But there are so many conflicting opinions. Where do I start?"</p>
+        <p class="mt-2"><span class="char-d">Ms. Anita:</span> "Start with the principles. A healthy diet is not a trend or a temporary fix — it's a pattern of eating that your body thrives on."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">📐 Core Principles of a Healthy Diet</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 1: Adequacy</p>
+      <p>Your diet must provide <span class="kw">all essential nutrients</span> in sufficient amounts — all vitamins, minerals, amino acids, fatty acids, water.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 2: Balance</p>
+      <p>No single food group dominates. The diet includes <span class="kw">appropriate proportions</span> of all groups:</p>
+      <p>→ Grains (50% of plate), Vegetables and Fruits (25-30%), Protein (20-25%), Dairy/Alternatives</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 3: Caloric Control (Energy Balance)</p>
+      <p>Energy in (food) = Energy out (metabolism + activity) → <span class="kw">Weight maintenance</span></p>
+      <p>→ Average Indian adult needs ~2000 kcal/day (women) to ~2500 kcal/day (men) depending on activity</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 4: Nutrient Density</p>
+      <p>Choose foods that give the most nutrition per calorie.</p>
+      <p>→ <span class="kw">Nutrient-dense foods:</span> vegetables, fruits, whole grains, legumes, lean protein, dairy, nuts, seeds</p>
+      <p>→ <span class="kw">Empty calorie foods:</span> sugar, white flour products, alcohol, soft drinks</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 5: Moderation</p>
+      <p>No food is forbidden, but some should be limited. Sugar, saturated fat, sodium, and alcohol in moderation. The problem is rarely the food — it's the quantity and frequency.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Principle 6: Variety</p>
+      <p>Eating a wide variety of foods ensures you get all micronutrients and phytochemicals. Eat the rainbow — different colors of vegetables contain different antioxidants.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🍽️ Practical Tools for Healthy Diet Planning</p>
+
+      <p><span class="kw">Dietary Reference Intakes (DRI):</span></p>
+      <p>→ <span class="kw">RDA</span> — meets the needs of 97–98% of healthy individuals</p>
+      <p>→ <span class="kw">AI (Adequate Intake)</span> — used when RDA cannot be determined</p>
+      <p>→ <span class="kw">UL (Tolerable Upper Intake Level)</span> — maximum safe intake</p>
+      <p>→ <span class="kw">EAR (Estimated Average Requirement)</span> — meets the needs of 50% of the population</p>
+
+      <p><span class="kw">Glycemic Index (GI):</span> Measures how fast a food raises blood glucose. Low GI foods (whole grains, legumes) → slower glucose release → better blood sugar control.</p>
+
+      <p><span class="kw">ICMR Balanced Diet Guidelines for Indians:</span></p>
+      <p>→ Cereals: 300–400 g/day; Pulses: 85 g/day; Vegetables: 300 g/day; Fruits: 100 g/day</p>
+      <p>→ Milk: 300 ml/day; Meat/Fish: 50 g/day; Fats and Oils: 20–25 g/day; Sugar: &lt;20 g/day</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>6 principles: <span class="kw">Adequacy</span> (all nutrients), <span class="kw">Balance</span> (all food groups), <span class="kw">Caloric Control</span> (energy in = out), <span class="kw">Nutrient Density</span> (max nutrition per calorie), <span class="kw">Moderation</span> (limit sugar/fat/salt), <span class="kw">Variety</span> (eat the rainbow).</p>
+        <p class="mt-1">Tools: MyPlate, DRI (RDA, AI, UL, EAR), GI, ICMR guidelines.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 14 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-red-400/20 text-red-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 14</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 4 · Episode 14</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">Measuring Health — Indices, Prevention &amp; Remedies</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">How we assess population health and fight disease proactively</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-red-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun visits a community health camp. Dr. Arora is conducting a health survey and explaining the indices used to measure nutrition.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">📏 Health and Nutritional Indices</p>
+
+      <p class="font-semibold text-blue-300 mt-3">1. Body Mass Index (BMI)</p>
+      <p><span class="kw">BMI = Weight (kg) ÷ Height² (m²)</span></p>
+      <p>→ &lt;18.5: Underweight | 18.5–24.9: Normal | 25–29.9: Overweight | ≥30: Obese</p>
+      <p>→ For Asians: <span class="kw">≥23: Overweight; ≥27.5: Obese</span> (Asians have more body fat at lower BMI)</p>
+      <p>→ Limitation: BMI doesn't distinguish fat from muscle.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">2. Waist-to-Hip Ratio (WHR)</p>
+      <p>→ High risk: WHR &gt;0.90 (men), &gt;0.85 (women)</p>
+      <p>→ Waist circumference high risk: &gt;90 cm (Asian men) or &gt;80 cm (Asian women)</p>
+
+      <p class="font-semibold text-blue-300 mt-3">3. Mid-Upper Arm Circumference (MUAC)</p>
+      <p>Used especially for children and field assessment. &lt;11.5 cm: Severe acute malnutrition; 11.5–12.5 cm: Moderate; &gt;12.5 cm: Normal.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">4. Hemoglobin Level</p>
+      <p>→ Normal: ≥12 g/dL (women), ≥13 g/dL (men). Used to assess iron deficiency anemia.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">5. Serum Albumin</p>
+      <p>→ Indicator of <span class="kw">protein-energy malnutrition</span>. Normal: 3.5–5 g/dL. &lt;3.5 indicates malnutrition.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">6. Growth Charts (Children)</p>
+      <p>→ <span class="kw">Weight-for-Age</span> (underweight), <span class="kw">Height-for-Age</span> (stunting = chronic malnutrition), <span class="kw">Weight-for-Height</span> (wasting = acute malnutrition)</p>
+
+      <p class="font-semibold text-blue-300 mt-3">7. Dietary Assessment Methods</p>
+      <p>→ <span class="kw">24-Hour Dietary Recall</span> — Person recalls everything eaten in the last 24 hours. Quick but may not be representative.</p>
+      <p>→ <span class="kw">Food Frequency Questionnaire (FFQ)</span> — How often certain foods are eaten. Better for habitual diet.</p>
+      <p>→ <span class="kw">Diet Record / Food Diary</span> — Person records everything eaten in real time. Most accurate.</p>
+      <p>→ <span class="kw">Weighed Food Record</span> — Food is weighed before and after eating. Gold standard.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🛡️ Preventive Measures</p>
+      <p>→ <span class="kw">Primary Prevention</span> — Preventing the disease before it starts. Vaccinations, food fortification, health education, restricting sugar/salt/trans fat.</p>
+      <p>→ <span class="kw">Secondary Prevention</span> — Early detection and treatment. Regular health screening, nutritional screening in hospitals.</p>
+      <p>→ <span class="kw">Tertiary Prevention</span> — Reducing complications of disease already present. Dietary therapy for diabetes, cardiac rehabilitation diet.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">💊 Remedial Measures</p>
+      <p>→ <span class="kw">Dietary modification</span> — Therapeutic diets prescribed by dietitians</p>
+      <p>→ <span class="kw">Supplementation</span> — Iron-folic acid for pregnant women, Vitamin D for deficiency</p>
+      <p>→ <span class="kw">Food fortification</span> — Adding nutrients to staple foods (iodine to salt, iron to wheat flour, Vitamin A to oil)</p>
+      <p>→ <span class="kw">Nutritional rehabilitation</span> — RUTF (Ready to Use Therapeutic Food) for severely malnourished children</p>
+      <p>→ <span class="kw">Community nutrition programs</span> — Mid-Day Meal Scheme, ICDS, PDS</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>Health indices: BMI (Asian cutoffs: 23/27.5), WHR (central obesity), MUAC (children), Hemoglobin (anemia), Serum albumin (protein status), Growth charts (stunting/wasting/underweight).</p>
+        <p class="mt-1">Dietary assessment: 24h recall, FFQ, food diary, weighed record. Prevention: Primary → Secondary → Tertiary. Remedies: Supplementation, Fortification, RUTF, Gov. programs (ICDS, Mid-Day Meal).</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 15 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-red-400/20 text-red-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 15</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 4 · Episode 15</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Body Under Pressure — Type I &amp; II Disorders</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Stress, CVD, Ulcers, Electrolytes, Cancer, Diabetes &amp; Energy Balance</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-red-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Dr. Arora holds a lecture for Arjun's class. He divides nutrition-related disorders into two types.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-d">Dr. Arora:</span> "<span class="kw">Type I disorders</span> are caused by a specific single nutrient deficiency or imbalance. <span class="kw">Type II disorders</span> are chronic non-communicable diseases (NCDs) where diet is a major risk factor but not the sole cause."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">TYPE I DISORDERS</p>
+
+      <p class="font-semibold text-blue-300 mt-3">A. Stress-Related Diseases</p>
+      <p><span class="kw">Cortisol</span> (stress hormone) raises blood glucose, suppresses immunity, and promotes protein breakdown.</p>
+      <p>Nutritional impact of chronic stress:</p>
+      <p>→ <span class="kw">Increased catabolism</span> — Protein and fat are broken down for energy. Muscle mass is lost.</p>
+      <p>→ <span class="kw">Increased nutrient needs</span> — Vitamin C, B vitamins, magnesium, zinc all increase.</p>
+      <p>→ <span class="kw">Emotional eating</span> — Stress triggers cravings for high-sugar, high-fat foods.</p>
+      <p>→ <span class="kw">Gut disruption</span> — Stress impairs digestion, worsens IBS, and increases gut permeability.</p>
+      <p>→ <span class="kw">Hyperglycemia</span> — Cortisol raises blood sugar. Can trigger Type 2 diabetes in susceptible individuals.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">B. Cardiovascular Diseases (CVD)</p>
+      <p>→ <span class="kw">Homocysteine elevation</span> — From deficiency of B6, B9 (folate), and B12. Damages artery walls, promoting atherosclerosis.</p>
+      <p>→ <span class="kw">Vitamin K2 deficiency</span> — Allows calcium to deposit in artery walls instead of bones.</p>
+      <p>→ <span class="kw">DASH diet</span> — High in fruits, vegetables, whole grains, low-fat dairy, potassium, magnesium; low in sodium and saturated fat.</p>
+      <p>→ <span class="kw">Mediterranean diet</span> — Olive oil, fish, legumes, whole grains, fruits. Reduces CVD risk by 30%.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">TYPE II DISORDERS</p>
+
+      <p class="font-semibold text-blue-300 mt-3">C. Peptic Ulcers</p>
+      <p>→ Primary cause: <span class="kw">Helicobacter pylori (H. pylori)</span> bacterial infection (~70% of cases) and chronic use of <span class="kw">NSAIDs</span></p>
+      <p>→ <span class="kw">Dietary management:</span> Small, frequent meals; avoid alcohol, spicy food, coffee; adequate protein for mucosal repair</p>
+      <p>→ <span class="kw">Treatment:</span> H. pylori eradication with antibiotics + proton pump inhibitors (PPIs)</p>
+
+      <p class="font-semibold text-blue-300 mt-3">D. Electrolyte Disorders</p>
+      <p>Electrolytes: sodium (Na+), potassium (K+), calcium (Ca2+), magnesium (Mg2+), chloride (Cl-).</p>
+      <p>→ <span class="kw">Hyponatremia</span> (low sodium) — Excessive water intake, severe vomiting/diarrhea. Symptoms: confusion, headache, seizures.</p>
+      <p>→ <span class="kw">Hypokalemia</span> (low potassium) — From diarrhea, vomiting, diuretics. Causes muscle weakness, cardiac arrhythmias.</p>
+      <p>→ <span class="kw">Hyperkalemia</span> (high potassium) — Renal failure. Requires dietary potassium restriction.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">E. Cancer — Nutrition Link</p>
+      <p>→ <span class="kw">Colorectal cancer</span> — High red/processed meat increases risk. High fiber intake is protective.</p>
+      <p>→ <span class="kw">Liver cancer</span> — Aflatoxin (from Aspergillus contaminating peanuts, corn, stored grains) is the single strongest dietary carcinogen known.</p>
+      <p>Protective factors: Antioxidants (Vitamins C, E, selenium), Cruciferous vegetables (sulforaphane), Lycopene, Omega-3 fatty acids, Folate.</p>
+
+      <p class="font-semibold text-blue-300 mt-3">F. Diabetes Mellitus</p>
+      <p>→ <span class="kw">Type 2 Diabetes</span> — Insulin resistance + relative insulin deficiency. Strongly linked to diet and lifestyle.</p>
+      <p>→ Mechanism: Excess fat releases inflammatory cytokines that impair insulin signaling → <span class="kw">Insulin resistance</span> → beta cells exhaust → frank diabetes.</p>
+      <p>Dietary management: Low GI foods, high fiber, carbohydrate counting, weight loss (even 5–7% dramatically improves blood sugar).</p>
+
+      <p class="text-yellow-400 font-bold mt-4">⚡ Energy Balance — Calculating Individual Needs</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Step 1: Calculate BMR (Mifflin-St Jeor)</p>
+      <p>→ Men: BMR = 10 × weight (kg) + 6.25 × height (cm) – 5 × age + 5</p>
+      <p>→ Women: BMR = 10 × weight (kg) + 6.25 × height (cm) – 5 × age – 161</p>
+
+      <p class="font-semibold text-blue-300 mt-3">Step 2: Apply Physical Activity Factor (PAL)</p>
+      <p>→ Sedentary: 1.2 | Lightly active: 1.375 | Moderately active: 1.55 | Very active: 1.725 | Extremely active: 1.9</p>
+      <p><span class="kw">TDEE = BMR × PAL</span></p>
+
+      <p class="font-semibold text-blue-300 mt-3">Step 3: Calculate Macronutrient Needs</p>
+      <p>→ <span class="kw">Carbohydrates:</span> 45–65% of total calories</p>
+      <p>→ <span class="kw">Protein:</span> 0.8 g/kg body weight (general); 1.2–2.0 g/kg for athletes</p>
+      <p>→ <span class="kw">Fat:</span> 20–35% of total calories</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="kw">Type I</span>: Stress (cortisol → catabolism, Vit C/Mg/Zn depletion), CVD via homocysteine (B6/B9/B12 deficiency), K2 deficiency (arterial calcification).</p>
+        <p class="mt-1"><span class="kw">Type II</span>: Ulcers (H. pylori, NSAIDs), Electrolytes (Na, K, Ca, Mg imbalance), Cancer (aflatoxin, processed meat → risk; antioxidants, fiber → protective), Diabetes (Type 2: insulin resistance; diet: low GI, fiber, weight loss).</p>
+        <p class="mt-1">Energy: BMR (Mifflin-St Jeor) × PAL = TDEE. Macros: 45–65% carbs, 10–35% protein, 20–35% fat.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ UNIT 5 ═══════════════════════════════ -->
+<div class="mb-3 mt-8 sm:mt-10">
+  <div class="unit-divider mb-5 sm:mb-6"></div>
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+    <span class="bg-blue-400 text-slate-900 text-xs font-black px-3 py-1 rounded-full tracking-widest whitespace-nowrap">UNIT 5</span>
+    <h2 class="text-lg sm:text-xl lg:text-2xl font-black text-white leading-snug">Genetically Modified Foods</h2>
+  </div>
+</div>
+
+<!-- EP 16 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-blue-400/20 text-blue-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 16</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 5 · Episode 16</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">Engineered to Eat — GM Ingredients, Labeling &amp; Bioavailability</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">What is GM food, how it's labeled, and does it absorb differently?</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-blue-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun sees a packet of corn chips labeled "Non-GMO." He asks Professor why that matters.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char">Arjun:</span> "What's so special about non-GMO? What are GM foods anyway?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "<span class="kw">Genetically Modified (GM) foods</span> are foods produced from organisms whose DNA has been deliberately changed using genetic engineering techniques — to give the organism a trait it would not naturally have."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🧬 GM Technologies</p>
+      <p>→ <span class="kw">Agrobacterium-mediated transformation</span> — A bacterium naturally transfers DNA into plant cells. Scientists piggyback desired genes into this natural process.</p>
+      <p>→ <span class="kw">Gene gun (Biolistics)</span> — Gold particles coated with DNA are fired into plant cells at high speed.</p>
+      <p>→ <span class="kw">CRISPR-Cas9</span> — The newest and most precise tool. Acts like molecular scissors to edit genes at specific locations.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🌽 Common GM Food Ingredients</p>
+
+      <p><span class="kw">GM Soybean</span> — ~90% of US soybeans are GM. Soy is in hundreds of processed foods: oil, lecithin, soy protein, tofu.</p>
+      <p><span class="kw">GM Corn (Maize)</span> — Bt corn contains genes from Bacillus thuringiensis producing Bt toxin, which kills corn borers without pesticide spraying. Found in corn starch, corn syrup (HFCS), corn flour.</p>
+      <p><span class="kw">GM Canola</span> — Herbicide-tolerant. Canola oil is widely used in cooking and processed foods.</p>
+      <p><span class="kw">GM Sugar Beet</span> — ~55% of US sugar comes from GM beet.</p>
+      <p><span class="kw">GM Papaya</span> — Ringspot-virus resistant papaya saved Hawaii's papaya industry from complete devastation.</p>
+      <p><span class="kw">Golden Rice</span> — Engineered to produce beta-carotene (Vitamin A precursor) to address Vitamin A deficiency.</p>
+      <p><span class="kw">AquAdvantage Salmon</span> — First GM animal approved for food (FDA 2015). Grows twice as fast as conventional salmon.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🏷️ GM Food Labeling Policies</p>
+
+      <p class="font-semibold text-blue-300 mt-3">European Union — Strictest</p>
+      <p>→ <span class="kw">Mandatory labeling</span> for all food/feed products containing &gt;0.9% approved GMO content</p>
+      <p>→ EU requires pre-market safety assessment for each GM crop individually</p>
+
+      <p class="font-semibold text-blue-300 mt-3">United States — Mandatory But Flexible</p>
+      <p>→ <span class="kw">NBFDS (National Bioengineered Food Disclosure Standard)</span> — Law implemented in 2022</p>
+      <p>→ Disclosure can be text, symbol, digital (QR code), or phone number</p>
+      <p>→ The symbol: a green leaf with "BE" (Bioengineered)</p>
+
+      <p class="font-semibold text-blue-300 mt-3">India — Pending</p>
+      <p>→ India has not yet approved any GM food crop for commercial cultivation (only Bt cotton for fiber)</p>
+      <p>→ <span class="kw">GM Mustard (DMH-11)</span> — Remains pending political decision</p>
+      <p>→ Draft GM food labeling regulations discussed by FSSAI but not yet notified as law</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 GM Ingredients and Bioavailability</p>
+
+      <p>→ Most approved GM crops have been assessed as <span class="kw">substantially equivalent</span> to their conventional counterparts — the same nutrients in similar amounts, absorbed similarly.</p>
+      <p>→ <span class="kw">Golden Rice</span> — beta-carotene is bioavailable and efficiently converted to Vitamin A.</p>
+      <p>→ <span class="kw">Low-phytate corn/rice</span> — Reducing phytate dramatically improves bioavailability of iron and zinc.</p>
+      <p>→ <span class="kw">High-lysine corn</span> — Improves protein quality and bioavailability.</p>
+      <p>→ Scientific consensus (WHO, FAO, National Academies of Science): currently approved GM foods are safe to eat and nutritionally equivalent to conventional alternatives.</p>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p>GM techniques: Agrobacterium, Gene gun, CRISPR. Major GM crops: Soy (herbicide tolerant), Corn (Bt toxin), Canola, Sugar beet, Papaya (virus resistant), Golden Rice (Vitamin A).</p>
+        <p class="mt-1">Labeling: EU strictest (0.9% threshold, mandatory text), USA (NBFDS, QR code/symbol option), India (no GM food crops approved yet, draft labeling pending).</p>
+        <p class="mt-1">Bioavailability: Most GM crops substantially equivalent. Scientific consensus: approved GM foods are safe.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 17 -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-blue-400/20 text-blue-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 17</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 5 · Episode 17</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">The Watchdogs — Regulatory Agencies for GM Foods</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Who decides what GM food is safe to eat?</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-blue-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base lg:text-lg leading-relaxed space-y-4 text-gray-200 prose-content">
+
+      <p class="scene">🎬 Scene: Arjun and Rina are in a debate about GM foods. Professor interrupts.</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-p">Professor:</span> "Before you argue about whether GM food is good or bad, you need to understand who regulates it and how. Multiple agencies around the world form a multi-layered safety system."</p>
+      </div>
+
+      <p class="text-yellow-400 font-bold mt-4">🌍 International/Global Agencies</p>
+
+      <p class="font-semibold text-blue-300 mt-3">1. Codex Alimentarius Commission (CAC)</p>
+      <p>→ Joint body of the <span class="kw">FAO</span> and <span class="kw">WHO</span></p>
+      <p>→ Develops international food standards, guidelines, and codes of practice for food safety including GM foods</p>
+      <p>→ Codex standards are the reference point in international trade disputes (under WTO agreements)</p>
+      <p>→ Codex is not a regulatory body — it provides guidelines that countries choose to adopt</p>
+
+      <p class="font-semibold text-blue-300 mt-3">2. WHO (World Health Organization)</p>
+      <p>→ WHO's position: "GM foods currently available on the international market have passed safety assessments and are unlikely to present risks for human health"</p>
+      <p>→ Conducts pre-market safety assessments: Is it toxic? Is it allergenic? Has it changed nutritionally?</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🇺🇸 United States — Coordinated Framework</p>
+
+      <p>Three agencies share jurisdiction:</p>
+      <p>→ <span class="kw">USDA-APHIS</span> — Regulates <span class="kw">environmental release</span> of GM crops. Grants permits for field trials.</p>
+      <p>→ <span class="kw">EPA</span> — Regulates <span class="kw">plant-incorporated protectants (PIPs)</span> — insect resistance traits like Bt toxin in crops.</p>
+      <p>→ <span class="kw">FDA</span> — Regulates <span class="kw">food safety</span>. Uses <span class="kw">substantial equivalence</span> as a key principle. Conducts a voluntary consultation process with GM food developers. Approved AquAdvantage GM salmon in 2015.</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🇪🇺 European Union — EFSA</p>
+
+      <p>→ <span class="kw">EFSA GMO Panel</span> evaluates each GM crop individually — molecular characterisation, comparative analysis, toxicology, allergenicity, nutritional assessment, and environmental risk</p>
+      <p>→ <span class="kw">EU Regulation 1829/2003</span> — Requires a 10-year renewable authorization for each GM product</p>
+      <p>→ EU applies a <span class="kw">moratorium principle</span> — member states can ban approved GM crops on precautionary grounds</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🇮🇳 India — Multiple Agencies</p>
+
+      <p>→ <span class="kw">GEAC</span> (Genetic Engineering Appraisal Committee) — Under Ministry of Environment. Apex body for approval of GM organism release. Approved Bt cotton in 2002.</p>
+      <p>→ <span class="kw">RCGM</span> (Review Committee on Genetic Manipulation) — Under Department of Biotechnology. Oversees contained research.</p>
+      <p>→ <span class="kw">FSSAI</span> — Responsible for food safety standards and labeling.</p>
+      <p>→ <span class="kw">ICAR</span> — Conducts government research on GM crops.</p>
+
+      <p>Legal Framework:</p>
+      <p>→ <span class="kw">Environment Protection Act, 1986</span> — Parent legislation governing GM organism release</p>
+      <p>→ <span class="kw">Rules for Manufacture, Use, Import, Export and Storage of Hazardous Microorganisms, 1989</span> — Specific rules for GMOs</p>
+
+      <p class="text-yellow-400 font-bold mt-4">🔬 The Safety Assessment Process (Universal Elements)</p>
+      <p>→ <span class="kw">Molecular characterisation</span> — Exactly which genes were inserted? Are they stable?</p>
+      <p>→ <span class="kw">Compositional analysis</span> — Compare GM vs non-GM crop for 100+ nutritional parameters</p>
+      <p>→ <span class="kw">Toxicological assessment</span> — Is the new protein toxic?</p>
+      <p>→ <span class="kw">Allergenicity assessment</span> — Does the new protein look like any known allergen?</p>
+      <p>→ <span class="kw">Environmental risk</span> — Does the GM crop harm non-target organisms? Can it become invasive?</p>
+      <p>→ <span class="kw">Post-market monitoring</span> — Ongoing surveillance after approval</p>
+
+      <div class="dialogue-block">
+        <p><span class="char-r">Rina:</span> "So many agencies! Why does it take so long for GM crops to get approved?"</p>
+        <p class="mt-2"><span class="char-p">Professor:</span> "Because we are dealing with something that, once released into the environment or food supply at scale, cannot easily be taken back. Better to be thorough upfront than sorry later."</p>
+      </div>
+
+      <div class="bg-slate-700/50 rounded-xl p-4 mt-5">
+        <p class="text-yellow-400 font-bold mb-2">🔁 Character Recap — Quick Revision</p>
+        <p><span class="kw">International:</span> Codex/FAO/WHO — guidelines and science, not enforcement. <span class="kw">USA:</span> USDA-APHIS (environment), EPA (Bt/pesticide traits), FDA (food safety, voluntary consultation). <span class="kw">EU:</span> EFSA assesses + European Commission authorizes; strictest worldwide; member states can ban. <span class="kw">India:</span> GEAC (environment/release), RCGM (contained research), FSSAI (food safety/labeling), ICAR (research).</p>
+        <p class="mt-1">Safety assessment covers: Molecular characterisation, Composition, Toxicology, Allergenicity, Environmental risk.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EP 18 placeholder -->
+<div class="card bg-slate-800 rounded-2xl shadow-xl mb-4 sm:mb-6 overflow-hidden opacity-60" onclick="toggleCard(this)">
+  <div class="p-4 sm:p-6 flex items-start justify-between gap-3 sm:gap-4">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      <span class="ep-badge bg-blue-400/20 text-blue-400 text-xs px-2 py-1 rounded-lg shrink-0 mt-0.5">EP 18</span>
+      <div class="min-w-0">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Unit 5 · Episode 18</div>
+        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white leading-snug">Coming Soon — Episode 18</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Stay tuned for the final episode</p>
+      </div>
+    </div>
+    <svg class="chevron w-5 h-5 text-blue-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+  <div class="card-body">
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 text-sm sm:text-base leading-relaxed text-gray-400 prose-content">
+      <p>This episode is coming soon. Check back later for the final installment of the Food Science &amp; Nutrition series.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-4 sm:bottom-8 sm:right-6 z-50 bg-yellow-400 text-slate-900 w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 translate-y-4 text-lg sm:text-xl font-black hover:scale-110 transition-all" aria-label="Scroll to top">↑</button>
+
+<footer class="text-center text-slate-500 text-xs sm:text-sm py-8 sm:py-10 relative z-10 px-4">
+  <p>StoryLearn — Food Science &amp; Nutrition · 18 Episodes · 5 Units</p>
+  <p class="mt-1">Knowledge is best when told as a story.</p>
+</footer>
+
+<script>
+  const totalEpisodes = 18;
+  const opened = new Set();
+
+  function toggleCard(card) {
+    const body = card.querySelector('.card-body');
+    const chevron = card.querySelector('.chevron');
+    const isOpen = body.classList.contains('open');
+
+    if (isOpen) {
+      body.classList.remove('open');
+      chevron.classList.remove('open');
+    } else {
+      body.classList.add('open');
+      chevron.classList.add('open');
+      const idx = Array.from(document.querySelectorAll('.card')).indexOf(card);
+      if (!opened.has(idx)) {
+        opened.add(idx);
+        updateProgress();
+      }
+    }
+  }
+
+  function updateProgress() {
+    const pct = Math.round((opened.size / totalEpisodes) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = opened.size + ' / ' + totalEpisodes + ' episodes';
+  }
+
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    if (window.scrollY > 400) {
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateY(0)';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateY(1rem)';
+    }
+  });
+</script>
+</body>
+</html>
